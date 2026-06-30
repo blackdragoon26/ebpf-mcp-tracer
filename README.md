@@ -108,6 +108,10 @@ wildcards on purpose. To add a new function:
 Don't add `kprobe:*` or `kprobe:do_*`-style wildcards -- that defeats the
 point of the allowlist.
 
+
+## For furthur documentation
+Look into Install.md
+
 ## What's deliberately NOT here yet
 
 - No `--unsafe` flag anywhere, which means `system()`, `override()`, and a
