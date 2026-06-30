@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Minimal fake bpftrace for testing engine.py's subprocess plumbing without
+# the real kernel-privileged binary. Mimics: -d (dry run), -l (list), -f json (run).
+if [[ "$1" == "--version" ]]; then
+  echo "bpftrace (fake) v0.0.0-test"
+  exit 0
+fi
+if [[ "$1" == "-l" ]]; then
+  echo "tracepoint:syscalls:sys_enter_openat"
+  echo "tracepoint:syscalls:sys_enter_open"
+  echo "kprobe:vfs_open"
+  exit 0
+fi
+if [[ "$1" == "-d" ]]; then
+  script_file="$2"
+  if grep -q "BROKEN_SYNTAX" "$script_file"; then
+    echo "stdin:2:5-6: ERROR: syntax error, unexpected ..." >&2
+    exit 1
+  fi
+  echo "fake IR dump"
+  exit 0
+fi
+if [[ "$1" == "-f" && "$2" == "json" ]]; then
+  echo '{"type":"attached_probes","data":{"probes":1}}'
+  echo '{"type":"printf","data":"pid=4522 file=/etc/passwd"}'
+  echo '{"type":"printf","data":"pid=4522 file=/tmp/x"}'
+  sleep 30
+  exit 0
+fi
+echo "unrecognized args: $@" >&2
+exit 1
