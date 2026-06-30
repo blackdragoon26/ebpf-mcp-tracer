@@ -8,6 +8,8 @@ handles BTF/CO-RE portability, hook attachment, and ring-buffer-to-text
 formatting, so this project is the orchestration and safety layer on top
 of it rather than a from-scratch eBPF compiler.
 
+The `ebpf-mcp-tracer` is a secure MCP server that bridges LLMs and the Linux kernel by orchestrating `bpftrace` for natural-language, kernel-level observability. Instead of compiling raw eBPF C, it leverages `bpftrace`'s built-in safety and portability while enforcing strict guardrails through explicit probe allowlists, blocked dangerous builtins, and hard execution timeouts. By exposing simple tools for probe discovery, dry-run validation, and timed trace execution over local stdio, it empowers AI agents to safely debug complex system bottlenecks and analyze process behavior without requiring deep eBPF expertise or risking host stability.
+
 ## What it exposes
 
 Three tools, callable by any MCP client (Claude Desktop, etc.):
