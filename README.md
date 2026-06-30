@@ -110,7 +110,7 @@ point of the allowlist.
 
 
 ## For furthur documentation
-Look into Install.md
+Look into https://github.com/blackdragoon26/ebpf-mcp-tracer/blob/main/INSTALL.md
 
 ## What's deliberately NOT here yet
 
