@@ -23,6 +23,10 @@ Three tools, callable by any MCP client (Claude Desktop, etc.):
 And one resource: `ebpf://system/kernel-info` (kernel version, bpftrace
 availability).
 
+## System Architecture
+<img width="932" height="1342" alt="image" src="https://github.com/user-attachments/assets/e9ccfb55-7d90-4b47-882c-b4b1147f38bf" />
+
+
 ## Setup on your machine
 
 1. Install bpftrace:
